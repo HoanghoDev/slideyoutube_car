@@ -1,0 +1,217 @@
+body{
+    background-color: #3A0E6A;
+    color:#ddd;
+    font-family: system-ui;
+}
+.container{
+    position: absolute;
+    width:1000px;
+    height:600px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-image: radial-gradient(#320643, #140534);
+    overflow: hidden;
+}
+.header{
+    position: absolute;
+    top:0;
+    width:100%;
+    z-index: 1111;
+    padding:10px;
+}
+.header .logo{
+    width:40px;
+    height:40px;
+    display: inline-block;
+}
+.header ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: inline-block;
+    transform: translate(0,-14px);
+}
+.header li{
+    display: inline-block;
+    font-size: 13px;
+    margin-left: 20px;
+}
+.directional{
+    position: absolute;
+    bottom:1px;
+    width:100%;
+    text-align: center;
+    z-index: 3;
+}
+.directional button{
+    width:50px;
+    height:50px;
+    color:#fff;
+    background-color: transparent;
+    border:none;
+    opacity: 0.2;
+}
+.directional button:hover{
+    opacity: 1;
+}
+#slide{
+    position: relative;
+    width:100%;
+    height:100%;
+}
+#slide .item{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index: 1;
+}
+#slide .item .image{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:75%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    opacity: 0;
+    transform: scale(3);
+    transition: 1.5s;
+}
+#slide .item .image img{
+    width:65%;
+    transition: 0.5s;
+}
+#slide .item .image::before{
+    position: absolute;
+    bottom:-30px;
+    height:60px;
+    width:60%;
+    background-color: #000;
+    content:'';
+    z-index: -1;
+    border-radius: 50%;
+    filter:blur(30px)
+}
+#slide .item .image img:hover{
+    transform: scale(1.1);
+}
+.content .left{
+    position: absolute;
+    left:40px;
+    top:15%;
+    display: none;
+}
+.content .left h1{
+    font-size: xxx-large;
+    font-weight: 500;
+    margin-bottom:10px;
+}
+.content .left .des{
+    font-size: small;
+    font-weight: 100;
+    opacity: 0.6;
+    margin-bottom:20px;
+}
+.content .left button{
+    font-size: small;
+    background-color: transparent;
+    border:none;
+    color:#fff;
+}
+.content .left button i:nth-child(1){
+    margin-left: 10px;
+}
+.content .right{
+    position: absolute;
+    right:40px;
+    top:15%;
+    display: none;
+}
+.content .right h2{
+    font-size: large;
+    font-weight: 500;
+    margin-bottom:10px;
+}
+.content .right ul{
+    padding: 0;
+    margin:0;
+    list-style: none;
+}
+.content .right li{
+    font-size: small;
+    position: relative;
+    margin-top: 20px;
+}
+.content .right li::before{
+    position: absolute;
+    left:-40px;
+    top:50%;
+    transform: translate(0,-50%);
+    width:8px;
+    height: 8px;
+    background-color: #8C0781;
+    content:'';
+    border-radius: 50%;
+    box-shadow:  0 0 10px #8C0781;
+}
+.content .right li p:nth-child(1){
+    font-weight: 500;
+    padding:0;
+    margin:0;
+}
+.content .right li p:nth-child(2){
+    font-weight: 100;
+    padding:0;
+    margin:0;
+    font-size: x-small;
+}
+#slide .item:nth-child(1) .image{
+    opacity: 0;
+    transform: scale(0) translate(-100px);
+}
+#slide .item:nth-child(2) .image{
+    opacity: 1;
+    transform: scale(1);
+}
+#slide .item:nth-child(2){
+    z-index: 3;
+}
+@keyframes contentOut {
+    from{
+        opacity: 1;
+    transform: translate(0,0);
+    }to{
+        opacity: 0;
+        transform: translate(0,-100%);
+        filter:blur(113px)
+    }
+}
+@keyframes contentIn {
+    from{
+        opacity: 0;
+    transform: translate(0,100%);
+    filter:blur(33px)
+    }to{
+        opacity: 1;
+        transform: translate(0,0);
+    }
+}
+#slide .item:nth-child(1) .left,
+#slide .item:nth-child(1) .right,
+#slide .item:nth-child(2) .left,
+#slide .item:nth-child(2) .right{
+    display: block;
+}
+#slide .item:nth-child(1) .left,
+#slide .item:nth-child(1) .right{
+    animation:contentOut 1s ease-in-out 1 forwards
+}
+#slide .item:nth-child(2) .left,
+#slide .item:nth-child(2) .right{
+    animation:contentIn 1s ease-in-out 1 forwards
+}
